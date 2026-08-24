@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <defs>
+    <filter id="violetGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1500" height="500" fill="#000"/>
+  <rect x="24" y="24" width="1452" height="452" fill="none" stroke="#111" stroke-width="2"/>
+
+  <text x="70" y="78" fill="#8052ff"
+        font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="17" font-weight="700" letter-spacing="8">&gt; SCHRODINGER'S CAT COIN — LIVE ON SOLANA</text>
+  <text x="64" y="198" fill="#fff"
+        font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="94" font-weight="400" letter-spacing="-4">Alive and dead.</text>
+  <text x="64" y="306" fill="#fff"
+        font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="86" font-weight="400" letter-spacing="-4">Until you </text>
+  <text x="432" y="306" fill="#ffb829"
+        font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="86" font-weight="400" letter-spacing="-4">check the chart.</text>
+  <text x="70" y="398" fill="#888"
+        font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="24" font-weight="200">$BOXCAT exists in superposition. Stop looking.</text>
+  <text x="70" y="442" fill="#ffb829"
+        font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700">[(o)_(o)]</text>
+  <text x="205" y="442" fill="#fff"
+        font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">BOXCAT.APP</text>
+
+  <g transform="translate(1060 54)">
+    <text x="80" y="32" text-anchor="middle" fill="#8052ff" filter="url(#violetGlow)"
+          font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="46" font-weight="700">?</text>
+    <text x="292" y="76" text-anchor="middle" fill="#8052ff" filter="url(#violetGlow)"
+          font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700">?</text>
+
+    <g fill="none" stroke-linecap="square">
+      <rect x="72" y="78" width="272" height="24" stroke="#fff" stroke-width="5"/>
+      <rect x="42" y="136" width="332" height="224" stroke="#777" stroke-width="5"/>
+      <path d="M0 222 H78 M338 222 H416 M0 272 H78 M338 272 H416" stroke="#555" stroke-width="5"/>
+      <path d="M42 360 H374" stroke="#fff" stroke-width="5"/>
+    </g>
+    <text x="142" y="270" text-anchor="middle" fill="#ffb829"
+          font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="48" font-weight="700">(o)</text>
+    <text x="276" y="270" text-anchor="middle" fill="#ffb829"
+          font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="48" font-weight="700">(o)</text>
+    <text x="209" y="318" text-anchor="middle" fill="#bdbdbd"
+          font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="38" font-weight="700">____</text>
+  </g>
+</svg>
