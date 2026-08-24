@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://boxcat.app/assets/boxcat-banner-1500x500.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --void: #000000;
@@ -90,21 +90,134 @@
   }
   .cta-row a.ghostlink:hover { color: var(--bone); }
 
-  /* ---------- ascii cat ---------- */
+  /* ---------- quantum box ---------- */
   .catstage { display: flex; justify-content: center; padding: 60px 0 96px; }
-  pre.cat {
+  .quantum-box {
+    position: relative;
+    width: min(100%, 34em);
+    height: 14em;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--bone);
     font-family: var(--mono);
-    font-size: clamp(12px, 2.2vw, 30px);
-    line-height: 0.8;
-    font-weight: 600;
-    color: var(--silver);
+    font-size: clamp(11px, 2.2vw, 29px);
+    line-height: .82;
+    cursor: pointer;
     user-select: none;
+    isolation: isolate;
+    -webkit-tap-highlight-color: transparent;
   }
-  .cat .q  { color: var(--iris); text-shadow: 0 0 14px rgba(128,82,255,.9); }
-  .cat .eye { color: var(--saffron); text-shadow: 0 0 12px rgba(255,184,41,.9); }
-  .cat .lid { color: var(--bone); }
-  .cat .whisk { color: #6a6a6a; }
-  .cat .gapbg { background: transparent; }
+  .quantum-box::before {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: 1.2em;
+    width: 18em; height: 7em;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(128,82,255,.2), transparent 68%);
+    filter: blur(1.2em);
+    opacity: .35;
+    z-index: -1;
+  }
+  .quantum-box:focus-visible { outline: 1px solid var(--iris); outline-offset: 12px; }
+  .box-rig { position: absolute; inset: 0; }
+  .box-cat,
+  .box-lid,
+  .box-body {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    font: inherit;
+    white-space: pre;
+  }
+  .box-cat {
+    bottom: 5.25em;
+    z-index: 2;
+    color: var(--silver);
+    line-height: .9;
+    opacity: 0;
+    transform: translate(-50%, 3.1em) scale(.92);
+  }
+  .box-cat .eye {
+    color: var(--saffron);
+    text-shadow: 0 0 12px rgba(255,184,41,.9);
+  }
+  .box-lid {
+    bottom: 4.65em;
+    z-index: 4;
+    color: var(--bone);
+    line-height: .76;
+    transform: translateX(-50%);
+    transform-origin: 8% 100%;
+  }
+  .box-body {
+    bottom: 0;
+    z-index: 3;
+    color: var(--silver);
+    line-height: .84;
+    transform: translateX(-50%);
+  }
+  .box-body .label { color: var(--iris); text-shadow: 0 0 14px rgba(128,82,255,.65); }
+  .box-particle {
+    position: absolute;
+    z-index: 5;
+    color: var(--iris);
+    font-weight: 700;
+    opacity: 0;
+    text-shadow: 0 0 14px rgba(128,82,255,.9);
+  }
+  .box-particle.p1 { left: 27%; top: 18%; }
+  .box-particle.p2 { right: 26%; top: 5%; }
+  .box-particle.p3 { right: 19%; top: 31%; color: var(--saffron); }
+  .box-readout {
+    position: absolute;
+    left: 50%; bottom: -2.2em;
+    transform: translateX(-50%);
+    width: 100%;
+    color: #666;
+    font-size: .48em;
+    line-height: 1;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .box-readout .prompt { color: var(--iris); }
+  .box-hint { color: #444; }
+  .quantum-box:hover .box-hint { color: var(--ash); }
+
+  .quantum-box.box-active .box-rig { animation: box-rattle 7s ease-in-out both; }
+  .quantum-box.box-active .box-lid { animation: lid-open 7s cubic-bezier(.68,-.3,.32,1.25) both; }
+  .quantum-box.box-active .box-cat { animation: cat-emerge 7s cubic-bezier(.2,.85,.3,1) both; }
+  .quantum-box.box-active .box-particle.p1 { animation: particle-rise 7s .1s ease-out both; }
+  .quantum-box.box-active .box-particle.p2 { animation: particle-rise 7s .32s ease-out both; }
+  .quantum-box.box-active .box-particle.p3 { animation: particle-rise 7s .55s ease-out both; }
+  .quantum-box.box-active::before { animation: box-glow 7s ease-in-out both; }
+
+  @keyframes box-rattle {
+    0%, 11%, 21%, 100% { transform: translate(0,0) rotate(0); }
+    13% { transform: translate(-.08em,0) rotate(-.35deg); }
+    15% { transform: translate(.09em,-.03em) rotate(.4deg); }
+    17% { transform: translate(-.05em,0) rotate(-.2deg); }
+    19% { transform: translate(.04em,0) rotate(.15deg); }
+  }
+  @keyframes lid-open {
+    0%, 22% { transform: translateX(-50%) rotate(0); }
+    34%, 69% { transform: translate(-57%,-1.45em) rotate(-14deg); }
+    81%, 100% { transform: translateX(-50%) rotate(0); }
+  }
+  @keyframes cat-emerge {
+    0%, 27% { opacity: 0; transform: translate(-50%,3.1em) scale(.92); }
+    40%, 66% { opacity: 1; transform: translate(-50%,0) scale(1); }
+    77%, 100% { opacity: 0; transform: translate(-50%,3.1em) scale(.92); }
+  }
+  @keyframes particle-rise {
+    0%, 30% { opacity: 0; transform: translateY(1em) scale(.7); }
+    42%, 63% { opacity: 1; transform: translateY(0) scale(1); }
+    75%, 100% { opacity: 0; transform: translateY(-1.2em) scale(.8); }
+  }
+  @keyframes box-glow {
+    0%, 20%, 88%, 100% { opacity: .25; transform: translateX(-50%) scale(.85); }
+    42%, 68% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+  }
 
   /* ---------- sections ---------- */
   section { padding: 120px 0; }
@@ -175,7 +288,17 @@
     .cta-row { flex-wrap: wrap; gap: 24px; }
     .foot-links { flex-wrap: wrap; gap: 18px 24px; }
     .foot-top { flex-direction: column; align-items: flex-start; }
-    .catstage { padding: 36px 0 60px; }
+    .catstage { padding: 36px 0 70px; }
+    .quantum-box { font-size: clamp(10px, 3.2vw, 16px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .quantum-box.box-active .box-rig,
+    .quantum-box.box-active .box-lid,
+    .quantum-box.box-active .box-cat,
+    .quantum-box.box-active .box-particle,
+    .quantum-box.box-active::before { animation: none; }
+    .quantum-box .box-lid { transform: translate(-57%,-1.45em) rotate(-14deg); }
+    .quantum-box .box-cat { opacity: 1; transform: translate(-50%,0) scale(1); }
   }
 </style>
 </head>
@@ -206,20 +329,25 @@
   </header>
 
   <div class="catstage">
-<pre class="cat" id="cat">
-        <span class="q">?</span>
-                     <span class="q">?</span>
-    <span class="lid">┌──────────────────┐
-    └──────────────────┘</span>
-    ┌────────────────────┐
-    │                    │
- <span class="whisk">───</span>│<span class="gapbg">                    </span>│<span class="whisk">───</span>
- <span class="whisk">───</span>│<span class="gapbg">    <span class="eye" id="eyeL">(o)</span>      <span class="eye" id="eyeR">(o)</span>    </span>│<span class="whisk">───</span>
- <span class="whisk">───</span>│<span class="gapbg">                    </span>│<span class="whisk">───</span>
-    │                    │
-    │                    │
-    └────────────────────┘
-</pre>
+    <button class="quantum-box" id="quantumBox" type="button" aria-label="Observe the quantum box and reveal the cat">
+      <span class="box-particle p1" aria-hidden="true">?</span>
+      <span class="box-particle p2" aria-hidden="true">?</span>
+      <span class="box-particle p3" aria-hidden="true">!</span>
+      <span class="box-rig" aria-hidden="true">
+<span class="box-cat">     /\_/\
+    ( <span class="eye" id="eyeL">o</span>.<span class="eye" id="eyeR">o</span> )
+     &gt; ^ &lt;</span>
+<span class="box-lid">  ┌──────────────────┐
+  └──────────────────┘</span>
+<span class="box-body">  ┌────────────────────┐
+  │                    │
+──│   <span class="label">SUPERPOSITION</span>    │──
+  │      [BOXCAT]      │
+  │                    │
+  └────────────────────┘</span>
+      </span>
+      <span class="box-readout"><span class="prompt">&gt;</span> <span id="boxState">state: unobserved</span> <span class="box-hint">/ click to observe</span></span>
+    </button>
   </div>
 
   <div class="divider">? · ? · ? · ? · ? · ? · ? · ? · ?</div>
@@ -306,11 +434,33 @@
   const L = document.getElementById('eyeL');
   const R = document.getElementById('eyeR');
   function blink() {
-    L.textContent = '(—)'; R.textContent = '(—)';
-    setTimeout(() => { L.textContent = '(o)'; R.textContent = '(o)'; }, 140);
+    L.textContent = '—'; R.textContent = '—';
+    setTimeout(() => { L.textContent = 'o'; R.textContent = 'o'; }, 140);
     setTimeout(blink, 2600 + Math.random() * 2600);
   }
   setTimeout(blink, 1800);
+
+  // opening the box collapses the wavefunction; clicking restarts observation
+  const box = document.getElementById('quantumBox');
+  const boxState = document.getElementById('boxState');
+  let stateTimers = [];
+
+  function observeBox() {
+    stateTimers.forEach(clearTimeout);
+    stateTimers = [];
+    box.classList.remove('box-active');
+    void box.offsetWidth;
+    box.classList.add('box-active');
+    boxState.textContent = 'state: unobserved';
+    stateTimers.push(setTimeout(() => { boxState.textContent = 'state: collapsing...'; }, 1250));
+    stateTimers.push(setTimeout(() => { boxState.textContent = 'state: cat detected'; }, 2550));
+    stateTimers.push(setTimeout(() => { boxState.textContent = 'state: restoring...'; }, 5050));
+    stateTimers.push(setTimeout(() => { boxState.textContent = 'state: unobserved'; }, 6400));
+  }
+
+  box.addEventListener('click', observeBox);
+  observeBox();
+  setInterval(observeBox, 7800);
 </script>
 
 </body>
